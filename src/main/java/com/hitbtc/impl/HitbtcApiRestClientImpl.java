@@ -4,6 +4,7 @@ import com.hitbtc.HitbtcApiRestClient;
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
 import com.hitbtc.domain.market.MarketTicker;
+import com.hitbtc.domain.market.OrderBook;
 
 import java.util.Map;
 
@@ -37,5 +38,10 @@ public class HitbtcApiRestClientImpl implements HitbtcApiRestClient {
     @Override
     public Map<String, MarketTicker> getMarketTickers() {
         return executeSync(hitbtcApiService.getMarketTickers());
+    }
+
+    @Override
+    public Map<String, OrderBook> getOrderBook(String symbols, Integer limit) {
+        return executeSync(hitbtcApiService.getOrderBook(symbols, limit));
     }
 }

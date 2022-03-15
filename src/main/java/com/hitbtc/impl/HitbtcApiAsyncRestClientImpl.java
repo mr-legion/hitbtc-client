@@ -4,6 +4,7 @@ import com.hitbtc.HitbtcApiAsyncRestClient;
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
 import com.hitbtc.domain.market.MarketTicker;
+import com.hitbtc.domain.market.OrderBook;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -41,6 +42,13 @@ public class HitbtcApiAsyncRestClientImpl implements HitbtcApiAsyncRestClient {
     public CompletableFuture<Map<String, MarketTicker>> getMarketTickers() {
         CompletableFuture<Map<String, MarketTicker>> future = new CompletableFuture<>();
         hitbtcApiService.getMarketTickers().enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
+    }
+
+    @Override
+    public CompletableFuture<Map<String, OrderBook>> getOrderBook(String symbols, Integer limit) {
+        CompletableFuture<Map<String, OrderBook>> future = new CompletableFuture<>();
+        hitbtcApiService.getOrderBook(symbols, limit).enqueue(new RetrofitCallbackAdapter<>(future));
         return future;
     }
 }
