@@ -1,6 +1,7 @@
 package com.hitbtc.impl;
 
 import com.hitbtc.domain.general.Asset;
+import com.hitbtc.domain.market.MarketInfo;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -15,5 +16,10 @@ public interface HitbtcApiService {
 
     @GET("/api/3/public/currency")
     Call<Map<String, Asset>> getAssets();
+
+    // Market endpoints
+
+    @GET("/api/3/public/symbol")
+    Call<Map<String, MarketInfo>> getMarketInfo();
 
 }

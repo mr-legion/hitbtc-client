@@ -2,6 +2,7 @@ package com.hitbtc.impl;
 
 import com.hitbtc.HitbtcApiRestClient;
 import com.hitbtc.domain.general.Asset;
+import com.hitbtc.domain.market.MarketInfo;
 
 import java.util.Map;
 
@@ -23,5 +24,12 @@ public class HitbtcApiRestClientImpl implements HitbtcApiRestClient {
     @Override
     public Map<String, Asset> getAssets() {
         return executeSync(hitbtcApiService.getAssets());
+    }
+
+    // Market endpoints
+
+    @Override
+    public Map<String, MarketInfo> getMarketInfo() {
+        return executeSync(hitbtcApiService.getMarketInfo());
     }
 }

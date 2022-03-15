@@ -3,6 +3,7 @@ package com.hitbtc.impl;
 import com.hitbtc.HitbtcApiAsyncRestClient;
 import com.hitbtc.HitbtcApiClientFactory;
 import com.hitbtc.domain.general.Asset;
+import com.hitbtc.domain.market.MarketInfo;
 import org.hamcrest.collection.IsMapWithSize;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +22,11 @@ public class HitbtcApiAsyncRestClientImplTest {
     public void getAssets_ShouldReturnAssets() throws ExecutionException, InterruptedException {
         Map<String, Asset> assets = hitbtcApiAsyncRestClient.getAssets().get();
         assertThat(assets, allOf(notNullValue(), is(not(IsMapWithSize.anEmptyMap()))));
+    }
+
+    @Test
+    public void getMarketInfo_ShouldReturnMarketInfo() throws ExecutionException, InterruptedException {
+        Map<String, MarketInfo> marketInfo = hitbtcApiAsyncRestClient.getMarketInfo().get();
+        assertThat(marketInfo, allOf(notNullValue(), is(not(IsMapWithSize.anEmptyMap()))));
     }
 }
