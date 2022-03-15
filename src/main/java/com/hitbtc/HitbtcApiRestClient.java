@@ -2,6 +2,7 @@ package com.hitbtc;
 
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
+import com.hitbtc.domain.market.MarketTicker;
 
 import java.util.Map;
 
@@ -27,5 +28,12 @@ public interface HitbtcApiRestClient {
      * @return market info
      */
     Map<String, MarketInfo> getMarketInfo();
+
+    /**
+     * Get market ticker information.
+     *
+     * @return market tickers
+     */
+    Map<String, MarketTicker> getMarketTickers();
 
 }

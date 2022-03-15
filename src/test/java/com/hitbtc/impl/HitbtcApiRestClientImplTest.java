@@ -4,6 +4,7 @@ import com.hitbtc.HitbtcApiClientFactory;
 import com.hitbtc.HitbtcApiRestClient;
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
+import com.hitbtc.domain.market.MarketTicker;
 import org.hamcrest.collection.IsMapWithSize;
 import org.junit.jupiter.api.Test;
 
@@ -26,5 +27,11 @@ public class HitbtcApiRestClientImplTest {
     public void getMarketInfo_ShouldReturnMarketInfo() {
         Map<String, MarketInfo> marketInfo = hitbtcApiRestClient.getMarketInfo();
         assertThat(marketInfo, allOf(notNullValue(), is(not(IsMapWithSize.anEmptyMap()))));
+    }
+
+    @Test
+    public void getMarketTickers_ShouldReturnMarketTickers() {
+        Map<String, MarketTicker> marketTickers = hitbtcApiRestClient.getMarketTickers();
+        assertThat(marketTickers, allOf(notNullValue(), is(not(IsMapWithSize.anEmptyMap()))));
     }
 }

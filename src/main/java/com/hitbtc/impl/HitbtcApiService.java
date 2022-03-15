@@ -2,6 +2,7 @@ package com.hitbtc.impl;
 
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
+import com.hitbtc.domain.market.MarketTicker;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -21,5 +22,8 @@ public interface HitbtcApiService {
 
     @GET("/api/3/public/symbol")
     Call<Map<String, MarketInfo>> getMarketInfo();
+
+    @GET("/api/3/public/ticker")
+    Call<Map<String, MarketTicker>> getMarketTickers();
 
 }

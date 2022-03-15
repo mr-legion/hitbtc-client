@@ -2,6 +2,7 @@ package com.hitbtc;
 
 import com.hitbtc.domain.general.Asset;
 import com.hitbtc.domain.market.MarketInfo;
+import com.hitbtc.domain.market.MarketTicker;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -28,5 +29,12 @@ public interface HitbtcApiAsyncRestClient {
      * @return market info
      */
     CompletableFuture<Map<String, MarketInfo>> getMarketInfo();
+
+    /**
+     * Get market ticker information (asynchronous).
+     *
+     * @return market tickers
+     */
+    CompletableFuture<Map<String, MarketTicker>> getMarketTickers();
 
 }
