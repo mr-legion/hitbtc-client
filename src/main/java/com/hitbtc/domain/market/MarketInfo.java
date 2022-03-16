@@ -28,7 +28,7 @@ public class MarketInfo {
     /**
      * Whether margin trading is available.
      */
-    private boolean marginTrading;
+    private Boolean marginTrading;
 
     @JsonProperty("contract_type")
     private ContractType contractType;
@@ -47,25 +47,25 @@ public class MarketInfo {
      * Symbol quantity should be divided by this value with no remainder.
      */
     @JsonProperty("quantity_increment")
-    private double quantityIncrement;
+    private Double quantityIncrement;
 
     /**
      * Symbol price should be divided by this value with no remainder.
      */
     @JsonProperty("tick_size")
-    private double tickSize;
+    private Double tickSize;
 
     /**
      * Default fee rate.
      */
     @JsonProperty("take_rate")
-    private double takeRate;
+    private Double takeRate;
 
     /**
      * Default fee rate for market making trades.
      */
     @JsonProperty("make_rate")
-    private double makeRate;
+    private Double makeRate;
 
     /**
      * Currency in which fees are determined.

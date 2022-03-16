@@ -21,27 +21,27 @@ public class Network {
     /**
      * If default network.
      */
-    private boolean main;
+    private Boolean main;
 
     @JsonProperty("payin_enabled")
-    private boolean depositEnabled;
+    private Boolean depositEnabled;
 
     @JsonProperty("payout_enabled")
-    private boolean withdrawEnabled;
+    private Boolean withdrawEnabled;
 
     @JsonProperty("payin_confirmations")
-    private int minConfirm;
+    private Integer minConfirm;
 
     @JsonProperty("payout_fee")
-    private double withdrawFee;
+    private Double withdrawFee;
 
     @JsonProperty("payin_payment_id")
-    private boolean payinPaymentId;
+    private Boolean payinPaymentId;
 
     @JsonProperty("payout_is_payment_id")
-    private boolean payoutPaymentId;
+    private Boolean payoutPaymentId;
 
     @JsonProperty("precision_payout")
-    private double precisionPayout;
+    private Double precisionPayout;
 
 }

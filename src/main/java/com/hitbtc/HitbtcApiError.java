@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class HitbtcApiError {
-    private int code;
+    private Integer code;
     private String message;
     private String description;
 }

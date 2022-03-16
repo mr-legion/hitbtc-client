@@ -19,15 +19,15 @@ public class Asset {
     private String name;
 
     @JsonProperty("payinEnabled")
-    private boolean depositEnabled;
+    private Boolean depositEnabled;
 
     @JsonProperty("payoutEnabled")
-    private boolean withdrawEnabled;
+    private Boolean withdrawEnabled;
 
-    private boolean transferEnabled;
+    private Boolean transferEnabled;
 
     @JsonProperty("precision_transfer")
-    private double precisionTransfer;
+    private Double precisionTransfer;
 
     private List<Network> networks;
 
