@@ -14,11 +14,21 @@ public class HitbtcApiClientFactory {
     private final HitbtcApiServiceGenerator serviceGenerator;
 
     public HitbtcApiClientFactory() {
-        this(new OkHttpClient());
+        this.serviceGenerator = new HitbtcApiServiceGenerator(new OkHttpClient());
     }
 
-    private HitbtcApiClientFactory(OkHttpClient client) {
-        this.serviceGenerator = new HitbtcApiServiceGenerator(client);
+    public HitbtcApiClientFactory(ApiInteractionConfig apiInteractionConfig) {
+        this(new OkHttpClient(), apiInteractionConfig);
+    }
+
+    private HitbtcApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
+        OkHttpClient newClient = client.newBuilder()
+                .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
+                .addInterceptor(new RateLimitInterceptor(
+                        apiInteractionConfig.getMaxRequestsPerSecond(),
+                        apiInteractionConfig.getMaxApiKeyUsagePerSecond()
+                )).build();
+        this.serviceGenerator = new HitbtcApiServiceGenerator(newClient);
     }
 
     /**
