@@ -1,5 +1,7 @@
 package com.hitbtc.impl;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hitbtc.HitbtcApiErrorResponse;
 import com.hitbtc.exception.HitbtcApiException;
 import okhttp3.OkHttpClient;
@@ -20,11 +22,16 @@ import static com.hitbtc.constant.HitbtcApiConstants.API_BASE_URL;
  */
 public class HitbtcApiServiceGenerator {
 
-    private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Converter.Factory converterFactory = JacksonConverterFactory.create(mapper);
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, HitbtcApiErrorResponse> errorBodyConverter =
             (Converter<ResponseBody, HitbtcApiErrorResponse>) converterFactory.responseBodyConverter(
                     HitbtcApiErrorResponse.class, new Annotation[0], null);
+
+    static {
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+    }
 
     private final OkHttpClient client;
 
