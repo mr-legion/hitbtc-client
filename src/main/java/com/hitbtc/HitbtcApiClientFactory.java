@@ -21,7 +21,7 @@ public class HitbtcApiClientFactory {
         this(new OkHttpClient(), apiInteractionConfig);
     }
 
-    private HitbtcApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
+    public HitbtcApiClientFactory(OkHttpClient client, ApiInteractionConfig apiInteractionConfig) {
         OkHttpClient newClient = client.newBuilder()
                 .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
                 .addInterceptor(new RateLimitInterceptor(
