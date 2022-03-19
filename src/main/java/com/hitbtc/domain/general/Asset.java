@@ -31,4 +31,39 @@ public class Asset {
 
     private List<Network> networks;
 
+    public boolean isDepositEnabled() {
+        return networks.stream().anyMatch(Network::getDepositEnabled);
+    }
+
+    public boolean isWithdrawEnabled() {
+        return networks.stream().anyMatch(Network::getWithdrawEnabled);
+    }
+
+    public Integer getMinConfirm() {
+
+        Integer minConfirm = null;
+
+        for (Network network : networks) {
+            Integer confirm = network.getMinConfirm();
+            if (minConfirm == null || (confirm != null && confirm < minConfirm)) {
+                minConfirm = confirm;
+            }
+        }
+
+        return minConfirm;
+    }
+
+    public Double getMinWithdrawFee() {
+
+        Double minFee = null;
+
+        for (Network network : networks) {
+            Double fee = network.getWithdrawFee();
+            if (minFee == null || (fee != null && fee < minFee)) {
+                minFee = fee;
+            }
+        }
+
+        return minFee;
+    }
 }
