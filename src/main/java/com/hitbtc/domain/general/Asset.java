@@ -18,12 +18,13 @@ public class Asset {
     @JsonProperty("full_name")
     private String name;
 
-    @JsonProperty("payinEnabled")
+    @JsonProperty("payin_enabled")
     private Boolean depositEnabled;
 
-    @JsonProperty("payoutEnabled")
+    @JsonProperty("payout_enabled")
     private Boolean withdrawEnabled;
 
+    @JsonProperty("transfer_enabled")
     private Boolean transferEnabled;
 
     @JsonProperty("precision_transfer")
